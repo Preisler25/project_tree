@@ -1,9 +1,9 @@
 package dev.petrik.project_tree.controller;
 
+import dev.petrik.project_tree.model.Task;
+import dev.petrik.project_tree.model.Team;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 public class TeamController {
@@ -14,23 +14,14 @@ public class TeamController {
                            @RequestParam("view") String view,
                            @RequestParam("data") String data) {
 
-        System.out.println("day: " + day);
-        System.out.println("view: " + view);
-        System.out.println("data: " + data);
+        Task task1 = new Task(1, 1, 1, "task1", false, 100, 0);
+        Task task2 = new Task(2, 1, 1, "task2", false, 100, 0);
+        Task task3 = new Task(3, 1, 1, "task3", false, 100, 0);
+        Task task4 = new Task(4, 1, 2, "task4", false, 100, 0);
+        Task task5 = new Task(5, 1, 2, "task5", false, 100, 0);
 
-        Map<String, Object> team1 = new HashMap<>();
-        team1.put("id", 1);
-        team1.put("data", data);
-        team1.put("tasks_for_day", new Object[]{1, 2, 3});
-        team1.put("rank", 1);
-
-        //team2
-
-        Map<String, Object> team2 = new HashMap<>();
-        team2.put("team_id", 2);
-        team2.put("data", data);
-        team2.put("tasks_for_day", new Object[]{4, 5, 6});
-        team2.put("rank", 2);
+        Team team1 = new Team(1, data, new Task[]{task1, task2, task3}, 1);
+        Team team2 = new Team(2, data, new Task[]{task4, task5}, 2);
 
         return new Object[]{team1, team2};
     }
