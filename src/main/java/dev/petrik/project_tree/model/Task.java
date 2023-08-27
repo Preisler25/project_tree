@@ -78,4 +78,9 @@ public class Task {
         this.points = points;
     }
 
+    @Override
+    public String toString(){
+        return "Task" + id + " " + name + " " + points + "/" + max_points;
+    }
+
 }
